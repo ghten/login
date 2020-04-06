@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Sign In</h5>
+        <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <div class="form-label-group">
+            <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputEmail">Email address</label>
+            <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="alert alert-danger form-danger" role="alert">
+              <div *ngIf="loginForm.controls['email'].errors.required">Email is required</div>
+              <div *ngIf="loginForm.controls['email'].errors.invalidEmail">Invalid email</div>
+            </div>
+          </div>
+          <div class="form-label-group">
+            <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password" required>
+            <label for="inputPassword">Password</label>
+            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert alert-danger form-danger" role="alert">
+              <div *ngIf="loginForm.controls['password'].errors.required">Password is required</div>
+              <div *ngIf="loginForm.controls['password'].errors.minlength">length is minimum 8</div>
+            </div>
+          </div>
+
+          <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
